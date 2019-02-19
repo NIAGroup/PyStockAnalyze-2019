@@ -10,6 +10,13 @@ PROJ_VENV_NAME='pydjango-build-env'
 PROJ_VENV_PATH=$PROJ_BUILD_PATH/$PROJ_VENV_NAME
 PROJ_ACTENV_PATH=$PROJ_VENV_PATH/Scripts/activate
 
+# Pointer to manage python script
+PROJ_DJNAME='pysdjango'
+PROJ_DJANGO_PATH=$PROJ_SRC_PATH/$PROJ_DJNAME
+PROJ_MANAGE_PATH=$PROJ_DJANGO_PATH/manage.py
+alias manage='python $PROJ_MANAGE_PATH'
+
+
 # Create activate script pointer
 alias activate='source $PROJ_ACTENV_PATH'
 
