@@ -30,3 +30,9 @@ Django web application that takes stock data, analyzes it and presents a graphic
 5. Clone repository:
    > ```git clone https://github.com/NIAGroup/PyStockAnalyze.git```
 
+6. Enable git flow:
+   ```bash
+   cd <repo_path>
+   git flow init
+   ```
+
