@@ -36,3 +36,9 @@ Django web application that takes stock data, analyzes it and presents a graphic
    git flow init
    ```
 
+7. Test that the build flow worked by running django webserver:
+   ```bash
+   manage runserver
+   ```
+   > Open web browser to the following URL: ```http://127.0.0.1:8000/```
+
