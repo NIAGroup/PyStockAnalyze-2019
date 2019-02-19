@@ -8,9 +8,8 @@ Django web application that takes stock data, analyzes it and presents a graphic
    > https://git-scm.com/downloads
 3. Open Git Bash and navigate to home directory to create .bashrc file
    > ```touch ~/.bashrc```
-
    > Add the following code to the bashrc file
-   ```bash
+   > ```bash
    # Enable calling python executable
    alias python='winpty python.exe'
    # Setup proxy
