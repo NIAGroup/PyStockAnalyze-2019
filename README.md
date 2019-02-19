@@ -13,12 +13,16 @@ Django web application that takes stock data, analyzes it and presents a graphic
    > ```bash
    # Enable calling python executable
    alias python='winpty python.exe'
-
+   
+   # Setup proxy
+   PROXY_OPT=--proxy=--proxy=http://...
+   
    # Enable building environment through command
    alias buildenv='source $(git rev-parse --show-toplevel)/tools/build_env.sh'
    alias cleanenv='$(git rev-parse --show-toplevel)/tools/clean_env.sh'
-
-   PROXY_OPT=--proxy=http://proxy-us.intel.com:911
+   alias setproxy='PROXY_OPT=--proxy=http://...'
+   alias clrproxy='PROXY_OPT='
+   
    ```
 
 4. Exit Git Bash and re-open it or run "source ~/.bashrc" to make the new commands available for execution while in git bash. The commands are to be used as follows:
