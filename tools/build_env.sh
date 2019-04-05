@@ -4,7 +4,6 @@ echo "[build] Creating project environment variables"
 PROJ_ROOT_DIR=$(git rev-parse --show-toplevel)
 PROJ_BUILD_PATH=$PROJ_ROOT_DIR/build
 PROJ_SRC_PATH=$PROJ_ROOT_DIR/src
-PROJ_LOC_PATH=$PROJ_SRC_PATH/local
 PROJ_TOOL_PATH=$PROJ_ROOT_DIR/tools
 
 PROJ_VENV_NAME='pydjango-build-env'
@@ -16,6 +15,9 @@ PROJ_DJNAME='pysdjango'
 PROJ_DJANGO_PATH=$PROJ_SRC_PATH/$PROJ_DJNAME
 PROJ_MANAGE_PATH=$PROJ_DJANGO_PATH/manage.py
 alias manage='python $PROJ_MANAGE_PATH'
+
+# Local environment (not-to-be-commited) directory
+PROJ_LOC_PATH=$PROJ_DJANGO_PATH/$PROJ_DJNAME/localenv
 
 
 # Create activate script pointer
@@ -42,5 +44,6 @@ else
 fi
 
 # Disable tracking of local environment files
-git update-index --assume-unchanged $PROJ_LOC_PATH/*
+git update-index --assume-unchanged $PROJ_LOC_PATH/*.py
+	# TODO: Add support for recursive search and ignore
 
