@@ -16,6 +16,9 @@ PROJ_DJANGO_PATH=$PROJ_SRC_PATH/$PROJ_DJNAME
 PROJ_MANAGE_PATH=$PROJ_DJANGO_PATH/manage.py
 alias manage='python $PROJ_MANAGE_PATH'
 
+# Local environment (not-to-be-commited) directory
+PROJ_LOC_PATH=$PROJ_DJANGO_PATH/$PROJ_DJNAME/localenv
+
 
 # Create activate script pointer
 alias activate='source $PROJ_ACTENV_PATH'
@@ -40,3 +43,10 @@ else
 	echo "[build] Python virtual environment already exists"
 fi
 
+# Disable tracking of local environment files
+git update-index --skip-worktree $PROJ_LOC_PATH/*.py
+	# TODO: Add support for recursive search and ignore
+
+# Don't want people to be able to run these--b/c they may get them wrong
+alias stashenv='git update-index --no-skip-worktree $PROJ_LOC_PATH/*.py; git stash push -- $PROJ_LOC_PATH'
+alias popenv='git stash pop'

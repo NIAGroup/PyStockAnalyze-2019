@@ -2,3 +2,7 @@
 build/
 activate
 *.sqlite3
+*.sublime-project
+*.sublime-workspace
+
+src/pysdjango/pysdjango/localenv/*
