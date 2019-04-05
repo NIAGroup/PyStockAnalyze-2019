@@ -5,4 +5,4 @@ activate
 *.sublime-project
 *.sublime-workspace
 
-src/local/*
+src/pysdjango/pysdjango/localenv/*
