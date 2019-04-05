@@ -4,3 +4,5 @@ activate
 *.sqlite3
 *.sublime-project
 *.sublime-workspace
+
+src/local
