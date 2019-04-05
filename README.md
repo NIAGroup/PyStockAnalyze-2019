@@ -12,8 +12,8 @@ Note: If you're using a Linux/Mac OS, skip to step 5 and assume that all steps a
    > Note: Make sure your editor is on your windows path or save the path in notepad (to be used in a later step)
 3. Install Git Bash:
    > https://git-scm.com/downloads
-4. While inside of the git bash commandline, modify proxy to support github access
-   > git config --global http.proxy http://<proxy_server>:<port>
+4. While inside of the git bash commandline, modify proxy to support github access by executing
+   > ```git config --global http.proxy http://<proxy_server>:<port>```
    
    > Note: Git bash will be used to make updates to the repository and submit them to the remote repository
 5. Open Git Bash and navigate to home directory to create .bashrc file
@@ -21,7 +21,7 @@ Note: If you're using a Linux/Mac OS, skip to step 5 and assume that all steps a
    
    > ```touch ~/.bashrc```
    
-   > To check that this file exists, run ls ~/.bashrc
+   > To check that this file exists, run ```ls ~/.bashrc```
 
    > Add the following code to the bashrc file
    ```bash
@@ -34,7 +34,7 @@ Note: If you're using a Linux/Mac OS, skip to step 5 and assume that all steps a
    alias atom='winpty C:/Users/<user_name>/AppData/Local/atom/atom.exe'
    
    # Setup proxy
-   PROXY_OPT=--proxy=--proxy=http://<proxy_server>:<port>
+   PROXY_OPT=--proxy=http://<proxy_server>:<port>
    # Enable building environment through command
    alias buildenv='source $(git rev-parse --show-toplevel)/tools/build_env.sh'
    alias cleanenv='$(git rev-parse --show-toplevel)/tools/clean_env.sh'
@@ -51,9 +51,9 @@ Note: If you're using a Linux/Mac OS, skip to step 5 and assume that all steps a
    > Execute ```git clone https://github.com/NIAGroup/PyStockAnalyze.git```
 
 6. Exit Git Bash and re-open it or run "source ~/.bashrc" to make the new commands available for execution while in git bash. The commands are to be used as follows:
-   > **buildenv** - Used to create the python virtual environment and install all dependencies
+   > **buildenv** - Used to create the python virtual environment and install all dependencies (Make sure to cd into the cloned repository before running this command)
 
-   > **cleanenv** - Used to remove virtual environment build folder and exit environment if it's active
+   > **cleanenv** - Used to remove virtual environment build folder and exit environment if it's active (Make sure to cd into the cloned repository before running this command)
 
 
 
