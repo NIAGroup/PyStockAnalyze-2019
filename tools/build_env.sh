@@ -4,6 +4,7 @@ echo "[build] Creating project environment variables"
 PROJ_ROOT_DIR=$(git rev-parse --show-toplevel)
 PROJ_BUILD_PATH=$PROJ_ROOT_DIR/build
 PROJ_SRC_PATH=$PROJ_ROOT_DIR/src
+PROJ_LOC_PATH=$PROJ_SRC_PATH/local
 PROJ_TOOL_PATH=$PROJ_ROOT_DIR/tools
 
 PROJ_VENV_NAME='pydjango-build-env'
@@ -39,4 +40,7 @@ if [ ! -d $PROJ_VENV_PATH ]; then
 else
 	echo "[build] Python virtual environment already exists"
 fi
+
+# Disable tracking of local environment files
+git update-index --assume-unchanged $PROJ_LOC_PATH/*
 
