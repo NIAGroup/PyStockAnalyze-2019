@@ -7,7 +7,9 @@ Django web application that takes stock data, analyzes it and presents a graphic
 2. Install Git Bash:
    > https://git-scm.com/downloads
 3. Open Git Bash and navigate to home directory to create .bashrc file
+   > Navigate to home directory by entering ```cd ~```
    > ```touch ~/.bashrc```
+   > To check that this file exists, run ls ~/.bashrc
 
    > Add the following code to the bashrc file
    ```bash
