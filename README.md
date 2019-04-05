@@ -7,7 +7,7 @@ Note: If you're using a Linux/Mac OS, skip to step 5 and assume that all steps a
 1. Install Python 3.7.2 (Check off "Add Python 3.7 to PATH")
    > https://www.python.org/downloads/release/python-372/
 2. Install a code editor
-   1. Option 1: PyCharm
+   1. Option 1: PyCharm (https://www.jetbrains.com/pycharm/download/#section=windows)
    2. Option 2: Sublime (https://www.sublimetext.com/3)
    > Note: Make sure your editor is on your windows path or save the path in notepad (to be used in a later step)
 3. Install Git Bash:
@@ -27,6 +27,12 @@ Note: If you're using a Linux/Mac OS, skip to step 5 and assume that all steps a
    ```bash
    # Enable calling python executable
    alias python='winpty python.exe'
+   
+   # Add support to open editors from git bash commandline with ```$ <editor_name> <file>```
+   alias pycharm='winpty pycharm.exe'
+   alias sublime='winpty C:/Program\ Files/Sublime\ Text\ 3/sublime_text.exe'
+   alias atom='winpty C:/Users/<user_name>/AppData/Local/atom/atom.exe'
+   
    # Setup proxy
    PROXY_OPT=--proxy=--proxy=http://<proxy_server>:<port>
    # Enable building environment through command
@@ -35,11 +41,14 @@ Note: If you're using a Linux/Mac OS, skip to step 5 and assume that all steps a
    alias setproxy='PROXY_OPT=--proxy=http://<proxy_sever>:<port>'
    alias clrproxy='PROXY_OPT='
    ```
+   > Copy the proxy info into your bash RC file on the lines containing
    
    > Make sure to update the PROXY in the bashrc with the correct proxy information behind the firewall
 
 5. Clone repository:
-   > ```git clone https://github.com/NIAGroup/PyStockAnalyze.git```
+   > Inside of your terminal/git bash, navigate to the folder in which you want to download your repository
+   
+   > Execute ```git clone https://github.com/NIAGroup/PyStockAnalyze.git```
 
 6. Exit Git Bash and re-open it or run "source ~/.bashrc" to make the new commands available for execution while in git bash. The commands are to be used as follows:
    > **buildenv** - Used to create the python virtual environment and install all dependencies
