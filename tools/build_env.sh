@@ -49,4 +49,4 @@ git update-index --skip-worktree $PROJ_LOC_PATH/*.py
 
 # Don't want people to be able to run these--b/c they may get them wrong
 alias stashenv='git update-index --no-skip-worktree $PROJ_LOC_PATH/*.py; git stash push -- $PROJ_LOC_PATH'
-alias popenv='git stash pop'
+alias popenv='git stash pop > /dev/null; git update-index --skip-worktree $PROJ_LOC_PATH/*.py'
