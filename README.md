@@ -44,6 +44,8 @@ Note: If you're using a Linux/Mac OS, skip to step 5 and assume that all steps a
    > Copy the proxy info into your bash RC file on the lines containing
    
    > Make sure to update the PROXY in the bashrc with the correct proxy information behind the firewall
+   
+   > Note if you're adding the alias links for pycharm/sublime/atom/notepad++ to make sure to specify in Linux style (directories separated by /, and not \, the latter being Windows style)
 
 5. Clone repository:
    > Inside of your terminal/git bash, navigate to the folder in which you want to download your repository
