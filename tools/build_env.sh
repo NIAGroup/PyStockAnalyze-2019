@@ -44,6 +44,9 @@ else
 fi
 
 # Disable tracking of local environment files
-git update-index --assume-unchanged $PROJ_LOC_PATH/*.py
+git update-index --skip-worktree $PROJ_LOC_PATH/*.py
 	# TODO: Add support for recursive search and ignore
 
+# Don't want people to be able to run these--b/c they may get them wrong
+alias stashenv='git update-index --no-skip-worktree $PROJ_LOC_PATH/*.py; git stash push -- $PROJ_LOC_PATH'
+alias popenv='git stash pop'
