@@ -58,14 +58,18 @@ Note: If you're using a Linux/Mac OS, skip to step 5 and assume that all steps a
    > **cleanenv** - Used to remove virtual environment build folder and exit environment if it's active (Make sure to cd into the cloned repository before running this command)
 
 
+7. Add the line below to pystockanalyze-2019/src/pysdjango/pysdjango/localenv/localuser.py above the Database passwords
 
-6. Enable git flow:
+django_production_key='123'
+
+
+8. Enable git flow:
    ```bash
    cd <repo_path>
    git flow init
    ```
 
-7. Test that the build flow worked by running django webserver:
+9. Test that the build flow worked by running django webserver:
    ```bash
    manage runserver
    ```
