@@ -66,9 +66,9 @@ Note: If you're using a Linux/Mac OS, skip to step 5 and assume that all steps a
    django_production_key='123'
 
    NOTE: The file can be found in the following directory:
-   '''
+   ```
    pystockanalyze-2019/src/pysdjango/pysdjango/localenv/localuser.py
-   '''
+   ```
 9. Enable git flow:
    ```bash
    cd <repo_path>
