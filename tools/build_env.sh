@@ -43,26 +43,5 @@ else
 	echo "[build] Python virtual environment already exists"
 fi
 
-# Disable tracking of local environment files
-git update-index --skip-worktree $PROJ_LOC_PATH/*.py
-	# TODO: Add support for recursive search and ignore
-
-# Don't want people to be able to run these--b/c they may get them wrong
-alias stashenv='git update-index --no-skip-worktree $PROJ_LOC_PATH/*.py; git stash push -- $PROJ_LOC_PATH'
-alias popenv='git stash pop > /dev/null; git update-index --skip-worktree $PROJ_LOC_PATH/*.py'
-
-gitf_function() {
-	stashenv
-	git flow feature finish "$1"
-	popenv
-}
-
-gitp_function() {
-	stashenv
-	git pull
-	popenv
-}
-
 alias gits='git flow feature start'
-alias gitf='gitf_function'
-alias gitp='gitp_function'
+alias gite='git flow feature finish'
