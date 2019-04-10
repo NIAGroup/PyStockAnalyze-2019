@@ -57,15 +57,25 @@ Note: If you're using a Linux/Mac OS, skip to step 5 and assume that all steps a
 
    > **cleanenv** - Used to remove virtual environment build folder and exit environment if it's active (Make sure to cd into the cloned repository before running this command)
 
-
-
-6. Enable git flow:
+7. To activate the virtual environment type in the following command:
+   ```
+   activate
+   ```
+8. Add the line below to the following file : localuser.py **above the Database passwords declarations**
+   ```
+   django_production_key='123'
+   ```
+   NOTE: The file can be found in the following directory:
+   ```
+   PyStockAnalyze/src/pysdjango/pysdjango/localenv/localuser.py
+   ```
+9. Enable git flow:
    ```bash
    cd <repo_path>
    git flow init
    ```
 
-7. Test that the build flow worked by running django webserver:
+10. Test that the build flow worked by running django webserver:
    ```bash
    manage runserver
    ```
