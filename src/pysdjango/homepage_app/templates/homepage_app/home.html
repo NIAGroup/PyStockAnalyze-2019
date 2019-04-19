@@ -9,8 +9,12 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!-- Additional CSS for documentation site -->
       <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+      <!--
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    -->
+      <link rel="stylesheet" href="{% static 'homepage_app/materialize/css/materialize.min.css' %}">
 
+      <!-- This is the webapp icon seen on the tab of your browser -->
       <link rel="shortcut icon" type="image/ico" href="{% static 'homepage_app/images/NIA_STEM_LOGO_white.png' %}"/>
 
       <!-- DROOPDOWNS -->
@@ -20,9 +24,9 @@
           <li><a href="#!">Database</a></li>
         </ul>
         <ul id="alphav" class="dropdown-content">
-          <li><a href="#">Viewer1</a></li>
-          <li><a href="#">Analysis1</a></li>
-          <li><a href="#">Database1</a></li>
+          <li><a href="#">Viewer</a></li>
+          <li><a href="#">Analysis</a></li>
+          <li><a href="#">Database</a></li>
         </ul>
 
       <nav>
@@ -30,17 +34,13 @@
         <div class="nav-wrapper blue">
           <a class="brand-logo right"><img src="{% static 'homepage_app/images/NIA_STEM_LOGO.png' %}" alt="" class="responsive-img" style="height:55px; margin-top:5px"></img></a>
           <ul class="left">
+
             <li><a href="" class="waves-effect waves-light">Home</a></li>
             <li><a href="/admin" class="waves-effect waves-light">Admin</a></li>
 
-            <li><a href="#" class="dropdown-button" data-activates="google">Google Viewer</a></li>
-
-            <li><a href="#" class="dropdown-button" data-activates="alphav">Google Database</a></li>
-            <li><a href="#" class="dropdown-button" data-activates="alphav">Google Analysis</a></li>
-            <li><a href="#" class="dropdown-button" data-activates="google">Alpha Viewer</a></li>
-
-            <li><a href="#" class="dropdown-button" data-activates="alphav">Alpha Database</a></li>
-            <li><a href="#" class="dropdown-button" data-activates="alphav">Alpha Analysis</a></li>
+            <!-- Dropdown Triggers -->
+            <li><a class='dropdown-trigger btn transparent' href='#' data-target='google'>Google API</a></li>
+            <li><a class='dropdown-trigger btn blue' href='#' data-target='alphav'> Alpha Vantage API</a></li>
           </ul>
         </div>
 
@@ -51,15 +51,21 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
-      <div class="mdl-selectfield" style="width:200px;">
-    <select class="browser-default">
-      <option value="" disabled selected>Choose your option</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-  </div>
 
+
+        
+  <!-- floating button -->
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+    </ul>
+  </div>
     <body>
 
       <!-- JavaScript -->
@@ -69,10 +75,26 @@
       <!-- Additional JavaScript for documentation site -->
       <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 
-      <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script src="{% static 'homepage_app/materialize/js/materialize.min.js' %}"></script>
 
-    </body>
+    <!-- button dropdown script -->
+    <script>
+      /*document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var instances = M.Dropdown.init(elems, options);
+      });*/
+      // Or with jQuery
+
+      $('.dropdown-trigger').dropdown();
+    </script>
+
+    <!-- floating button script -->
+    <script>
+      $(document).ready(function(){
+        $('.fixed-action-btn').floatingActionButton();
+      });
+    </script>
+  </body>
 
 
   </html>
