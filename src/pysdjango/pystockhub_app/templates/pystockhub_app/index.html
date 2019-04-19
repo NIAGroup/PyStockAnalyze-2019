@@ -2,6 +2,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<!-- Add to support responsive webpage-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<title>PyStock</title>
 
 	{% load static %}
@@ -11,12 +14,34 @@
 
 	<link rel="shortcut icon" type="image/ico" href="{% static 'pystockhub_app/images/package.ico' %}"/>
 
+	<!-- Slider support -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="{% static 'pystockhub_app/js/jquery.cycle2.min.js' %}"></script>
+
 </head>
 <body>
+<div id="user_pane"></div>
+<div id="nav_pane"></div>
+<div id="banner_pane">
+	<div class="cycle-slideshow">
+		<span class="cycle-prev">&#9001;</span>
+		<span class="cycle-next">&#9002;</span>
+		<span class="cycle-pager"></span>
+		
+		<img src="{% static 'pystockhub_app/images/image1.png' %}", alt="First image">
+		<img src="{% static 'pystockhub_app/images/image2.png' %}", alt="First image">
+	</div>
+
+
+</div>
+<div id="content_pane">
 	<h1>First Page</h1>
 
 		<img src="{% static 'pystockhub_app/images/pystocklogo.png' %}" alt="image">
 
-		<p></p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+</div>
 </body>
 </html>

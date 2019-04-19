@@ -1,11 +1,77 @@
 body {
-	font-family: 'Open Sans', sans-serif;
-	color: #474747;
+	/*font-family: 'Open Sans', sans-serif;*/
+	/*color: #474747;-->*/
+	margin: 0;
+	padding: 0;
+	background-color: #E8E8E8;
 }
 
 
 h1 {
+	margin: 0;
 	font-family: 'Pacifico', cursive;
 }
 
 
+#content_pane {
+	width: 80%;
+	margin: 0 auto 0 auto;
+	padding: 0px;
+	background-color: white;
+}
+
+#banner_pane .cycle-slideshow {
+	width: 100%;
+	display: block;
+	position: relative;
+	margin: 0 auto;
+}
+#banner_pane img {
+	max-width: 100%;
+}
+
+.cycle-prev, .cycle-next {
+	font-size: 200%;
+	color: #FFFFFF;
+	display: block;
+	position: absolute;
+	top: 50%;
+	margin-top: -16px;
+	z-index: 9999;
+	cursor: pointer;
+}
+
+.cycle-prev {left: 10%;}
+.cycle-next {right: 10%;}
+.cycle-pager {
+	width: 100%;
+	text-align: center;
+	display: block;
+	position: absolute;
+	bottom: 10px;
+	z-index: 500;
+	cursor: pointer;
+	overflow: hidden;
+	list-style-type: none;
+}
+
+.cycle-pager > * {cursor: pointer;}
+.cycle-pager span {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	border: 1px solid #FFFFFF;
+	border-radius: 50%;
+	margin: auto 10px;
+}
+
+.cycle-overlay { 
+    font-family: tahoma, arial;
+    position: absolute; bottom: 0; width: 100%; z-index: 600;
+    background: black; color: white; padding: 15px; opacity: .5;
+}
+
+.cycle-pager .cycle-pager-active {background: #FFFFFF;}
