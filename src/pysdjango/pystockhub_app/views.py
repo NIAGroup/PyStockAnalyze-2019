@@ -6,5 +6,4 @@ from django.shortcuts import render
 
 
 def disp_index(request):
-    #return HttpResponse("Home Page")
     return render(request, 'pystockhub_app/index.html')
