@@ -3,8 +3,8 @@ from django.urls import path, include
 from django.conf import settings
 from . import views
 
-app_name = "home"
+app_name = "pystockhub_app"
 
 urlpatterns = [
-    path('', views.home, name=app_name),
+    path('', views.disp_index, name=app_name),
 ]

@@ -21,7 +21,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', include('homepage_app.urls'), name='home_view'),
+    path('', include('pystockhub_app.urls'), name='index'),
 ]
 
-urlpatterns += staticfiles_urlpatterns()
