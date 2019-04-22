@@ -1,3 +1,4 @@
+<!-- The line below references the static directory assigned in the settings.py file -->
 {% load static from staticfiles %}
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
       <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
       <!--
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    -->
+      -->
       <link rel="stylesheet" href="{% static 'homepage_app/materialize/css/materialize.min.css' %}">
 
       <!-- This is the webapp icon seen on the tab of your browser -->
@@ -51,16 +52,50 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
-    <a class="waves-effect waves-light btn" id="test_btn1" onclick="call_view_test()" method="GET">Run Test Function</a>
-    <a class="waves-effect waves-light btn" id="test_btn" onclick="test_fxn()">Run Test Function</a>
+    <!--a class="waves-effect waves-light btn" id="test_btn1" onclick="call_view_test()" method="GET">Run Test Function</a-->
+    <container>
+    <div>
+      <table>
+        <tr>
+          <td>
+              <!-- adding dropdown selector for cryptocurrency symbol (type) -->
+              <div id="symbol_selection" class="input-field col s12">
+                <select id="selected_symbol">
+                  <option value="" disabled selected>Choose your CryptoCurrency</option>
+                  
+                </select>
+              </div>
+          </td>
+          <td>
+              <!-- adding dropdown selector for cryptocurrency market (physical currency type) -->
+              <div id="market_selection" class="input-field col s12">
+                <select id="selected_market">
+                  <option value="" disabled selected>Choose your Market</option>
+                </select>
+              </div>
+          </td>
+          <td>
+              <!-- adding function test button -->
+            <a class="waves-effect waves-light btn" id="test_btn" onclick="test_fxn()">Run Test</a>
+          </td>
+        </tr>
+      </table>
+      
+    </div>
+  </container>
+    
       
 
-        
-  <!-- floating button -->
+  <!-- table holder for adding new finds -->
+  <div>
+    <table id="results_table" class="responsive-table centered highlight ">
+      <tbody id="results_table_body"></tbody>
+    </table>
+  </div>
+
+  <!-- floating button example -->
   <div class="fixed-action-btn">
-    <a class="btn-floating btn-large red">
-      <i class="large material-icons">mode_edit</i>
-    </a>
+    w
     <ul>
       <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
       <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
@@ -83,12 +118,85 @@
 
       <script src="{% static 'homepage_app/materialize/js/materialize.min.js' %}"></script>
 
+      <!-- runs on start to create the options for the dropdown searches -->
+      <script type="text/javascript">
+        $( document ).ready(function() {
+            var op_items = [
+              "BTC",
+              "ETH",
+              "XRP",
+              "BCH",
+              "LTC",
+              "XLM",
+              "ETC",
+              "BAT",
+              "ZEC",
+              "USDC",
+            ]
+              markets = [
+                "AED : United Arab Emirates Dirham", "AFN : Afghan Afghani", "ALL : Albanian Lek", "AMD : Armenian Dram", 
+                "ANG : Netherlands Antillean Guilder", "AOA : Angolan Kwanza", "ARS : Argentine Peso", "AUD : Australian Dollar", 
+                "AWG : Aruban Florin", "AZN : Azerbaijani Manat", "BAM : Bosnia-Herzegovina Convertible Mark", "BBD : Barbadian Dollar", 
+                "BDT : Bangladeshi Taka", "BGN : Bulgarian Lev", "BHD : Bahraini Dinar", "BIF : Burundian Franc", 
+                "BMD : Bermudan Dollar", "BND : Brunei Dollar", "BOB : Bolivian Boliviano", "BRL : Brazilian Real", 
+                "BSD : Bahamian Dollar", "BTN : Bhutanese Ngultrum", "BWP : Botswanan Pula", "BZD : Belize Dollar", 
+                "CAD : Canadian Dollar", "CDF : Congolese Franc", "CHF : Swiss Franc", "CLF : Chilean Unit of Account UF", 
+                "CLP : Chilean Peso", "CNH : Chinese Yuan Offshore", "CNY : Chinese Yuan", "COP : Colombian Peso", 
+                "CUP : Cuban Peso", "CVE : Cape Verdean Escudo", "CZK : Czech Republic Koruna", "DJF : Djiboutian Franc", 
+                "DKK : Danish Krone", "DOP : Dominican Peso", "DZD : Algerian Dinar", "EGP : Egyptian Pound", 
+                "ERN : Eritrean Nakfa", "ETB : Ethiopian Birr", "EUR : Euro", "FJD : Fijian Dollar", 
+                "FKP : Falkland Islands Pound", "GBP : British Pound Sterling", "GEL : Georgian Lari", "GHS : Ghanaian Cedi", 
+                "GIP : Gibraltar Pound", "GMD : Gambian Dalasi", "GNF : Guinean Franc", "GTQ : Guatemalan Quetzal", 
+                "GYD : Guyanaese Dollar", "HKD : Hong Kong Dollar", "HNL : Honduran Lempira", "HRK : Croatian Kuna", 
+                "HTG : Haitian Gourde", "HUF : Hungarian Forint", "IDR : Indonesian Rupiah", "ILS : Israeli New Sheqel", 
+                "INR : Indian Rupee", "IQD : Iraqi Dinar", "IRR : Iranian Rial", "ISK : Icelandic Krona", 
+                "JEP : Jersey Pound", "JMD : Jamaican Dollar", "JOD : Jordanian Dinar", "JPY : Japanese Yen", 
+                "KES : Kenyan Shilling", "KGS : Kyrgystani Som", "KHR : Cambodian Riel", "KMF : Comorian Franc", 
+                "KPW : North Korean Won", "KRW : South Korean Won", "KWD : Kuwaiti Dinar", "KYD : Cayman Islands Dollar", 
+                "KZT : Kazakhstani Tenge", "LAK : Laotian Kip", "LBP : Lebanese Pound", "LKR : Sri Lankan Rupee", 
+                "LRD : Liberian Dollar", "LSL : Lesotho Loti", "LYD : Libyan Dinar", "MAD : Moroccan Dirham", 
+                "MDL : Moldovan Leu", "MGA : Malagasy Ariary", "MKD : Macedonian Denar", "MMK : Myanma Kyat", 
+                "MNT : Mongolian Tugrik", "MOP : Macanese Pataca", "MRO : Mauritanian Ouguiya (pre-2018)", "MRU : Mauritanian Ouguiya", 
+                "MUR : Mauritian Rupee", "MVR : Maldivian Rufiyaa", "MWK : Malawian Kwacha", "MXN : Mexican Peso", 
+                "MYR : Malaysian Ringgit", "MZN : Mozambican Metical", "NAD : Namibian Dollar", "NGN : Nigerian Naira", 
+                "NOK : Norwegian Krone", "NPR : Nepalese Rupee", "NZD : New Zealand Dollar", "OMR : Omani Rial", 
+                "PAB : Panamanian Balboa", "PEN : Peruvian Nuevo Sol", "PGK : Papua New Guinean Kina", "PHP : Philippine Peso", 
+                "PKR : Pakistani Rupee", "PLN : Polish Zloty", "PYG : Paraguayan Guarani", "QAR : Qatari Rial", 
+                "RON : Romanian Leu", "RSD : Serbian Dinar", "RUB : Russian Ruble", "RUR : Old Russian Ruble", 
+                "RWF : Rwandan Franc", "SAR : Saudi Riyal", "SBDf : Solomon Islands Dollar", "SCR : Seychellois Rupee", 
+                "SDG : Sudanese Pound", "SEK : Swedish Krona", "SGD : Singapore Dollar", "SHP : Saint Helena Pound", 
+                "SLL : Sierra Leonean Leone", "SOS : Somali Shilling", "SRD : Surinamese Dollar", "SYP : Syrian Pound", 
+                "SZL : Swazi Lilangeni", "THB : Thai Baht", "TJS : Tajikistani Somoni", "TMT : Turkmenistani Manat", 
+                "TND : Tunisian Dinar", "TOP : Tongan Pa'anga", "TRY : Turkish Lira", "TTD : Trinidad and Tobago Dollar", 
+                "TWD : New Taiwan Dollar", "TZS : Tanzanian Shilling", "UAH : Ukrainian Hryvnia", "UGX : Ugandan Shilling", 
+                "USD : United States Dollar", "UYU : Uruguayan Peso", "UZS : Uzbekistan Som", "VND : Vietnamese Dong", 
+                "VUV : Vanuatu Vatu", "WST : Samoan Tala", "XAF : CFA Franc BEAC", "XAG : Silver Ounce", 
+                "XCD : East Caribbean Dollar", "XDR : Special Drawing Rights", "XOF : CFA Franc BCEAO", "XPF : CFP Franc", 
+                "YER : Yemeni Rial", "ZAR : South African Rand", "ZMW : Zambian Kwacha", "ZWL : Zimbabwean Dollar", 
+                ]
+            var option = "";
+            for(var i = 0 ; i < op_items.length; i++){
+              //-test_line//console.log(i)
+              option = "<option value="+ op_items[i]+">"+ op_items[i] +"</option>";
+              $("#symbol_selection select").append(option);
+            }
+            for(var i = 0 ; i < markets.length; i++){
+              //-test_line//console.log(i)
+              option = "<option value="+ markets[i] + ">"+ markets[i] +"</option>";
+              $("#market_selection select").append(option);
+            }
+        });
+      </script>
     <!-- button dropdown script -->
     <script>
-
       $('.dropdown-trigger').dropdown();
     </script>
-
+    <!--  select element script -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('select').formSelect();
+      });
+    </script>
     <!-- floating button script -->
     <script>
       $(document).ready(function(){
@@ -101,34 +209,98 @@
       {% block jquery %}
 
       function test_fxn() {
-        console.log("this is a test");
-        
-        if (Math.floor(Math.random() * 2) == 0){  
-          $("#test_btn").html('Save');
-        } else {
-          $("#test_btn").html('DUH bih');
-        }
-      }
 
-      // function call_view_test(){
-      //   var the_string = $("#test_btn1").text();
-      //   console.log(the_string)
-      // }
+        //-test_line//console.log("successful ajax call w/ test btn");
+        //-test_line//console.log("symbol 1 - " + $("#selected_symbol").val())
+        //-test_line//console.log("market 1 - " + $("#selected_market").val())
 
-      function call_view_test(){
-          $.ajax({
+        //The function below changes the test button text and disabled it while the alph_vantage
+        //function is running. This helps avoid conflicting requests errors and longer delays.
+        $(document).ajaxSend(function(event, request, settings) {
+          $('#test_btn').html("Running...");
+          $('#test_btn').attr("class","waves-effect waves-light btn disabled");
+        });
+
+        //ajax calls are used to make changes on the fly that call other functions outside of the html file
+        //this specific call is being used to reference the python code function in the views.py file which
+        //is mapped to a url on our url.py file.
+        $.ajax({
             method: "GET",
             url:'tester',
-            data:{"texter":$("#test_btn1").text()},
+            data:{"symbol":$("#selected_symbol").val(),"market":$("#selected_market").val()},
             success: function(data){
-              console.log("successful ajax call w/ test btn");
+              //-test_line//console.log("symbol 2 - " + $("#selected_symbol").val())
+              //-test_line//console.log("market 2 - " + $("#selected_market").val())
+              //-test_line//alert(data.symbol)
+              console.log("~~~the symbol: " + data.symbol)
+              console.log("~~~the market: " + data.name)
+              
+              if (data.symbol == ""){
+                console.log("Uh Oh! \n The search combination entered does not return valid values. Please try another combination.");
+                alert("Uh Oh! \n The search combination entered does not return valid values. Please try another combination.");
+                
+              }
+              else{
+                var rowCount = $('tbody#results_table_body tr:last').index() + 1;
+                var headerExists = $('#header_row').length;
+                console.log("header: "+headerExists)
+                if(headerExists == 0){
+                  var headers = 
+                  "<thead id='header_row' background-color='red'> \
+                    <tr> \
+                      <th><font color='black'>Row</font></th> \
+                      <th><font color='black'>Symbol</font></th> \
+                      <th><font color='black'>Name</font></th> \
+                      <th><font color='black'>Open</font></th> \
+                      <th><font color='black'>Close</font></th> \
+                      <th><font color='black'>High</font></th> \
+                      <th><font color='black'>Low</font></th> \
+                      <th><font color='black'>Percentage</font></th> \
+                    </tr> \
+                  </thead>"
+                  ;
+                  $("#results_table").append(headers)
+                  console.log("creating headers")
+                }
+                console.log(rowCount)
+                var content = ""
+                
+                for(i=0; i<1; i++){
+                    var row = i + rowCount + 1
+                    content += " \
+                    <tr class='entry_rows'> \
+                      <td>" +  "<font color='black'>" + row + " </font>" + '</td> \
+                      <td>' +  "<font color='black'>" + data.symbol + " </font>" + '</td> \
+                      <td>' +  "<font color='black'>" + data.name + " </font>" + '</td> \
+                      <td>' +  "<font color='black'>" + data.open_rate + " </font>" + '</td> \
+                      <td>' +  "<font color='black'>" + data.close_rate + " </font>" + '</td> \
+                      <td>' +  "<font color='black'>" + data.day_high + " </font>" + '</td> \
+                      <td>' +  "<font color='black'>" + data.day_low + " </font>" + '</td> \
+                      <td>' +  "<font color='black'>" + data.change_percentage + " </font>" + '</td> \
+                    </tr>'
+                    ;
+                }
+                $("#results_table_body").append(content)
+              }
+              //re-enables test button after run has completed
+              $("#test_btn").html("Run Test");
+              $('#test_btn').attr("class","waves-effect waves-light btn");
+              //binds function to each row to remove on row click
+              $(document).on("click", "tr.entry_rows" , function() {
+                  $(this).remove();
+                  
+              });
+            
             },
 
           });
-              
-       }
-
+        //-test_line//console.log("this is a test");
+        
+        
+      }
+      
       {% endblock %}
+       
     </script>
 
         

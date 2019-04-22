@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.http import JsonResponse
+from .scripts.homepage_app.test_alphavantage_crypto import Crypto_Generate
 
 # Create your views here.
 #Hi guys
@@ -10,6 +12,10 @@ def home(request):
 
 def testing(request,*args,**kwargs):
 
-	print(request.GET.get('texter'))
-	return render(request, 'homepage_app/home.html')
+	symbol = request.GET.get('symbol')
+	market = request.GET.get('market')
+	cry_g = Crypto_Generate()
+	print("running")
+	vals = cry_g.get_daily(symbol,market)
+	return JsonResponse(vals)
 
