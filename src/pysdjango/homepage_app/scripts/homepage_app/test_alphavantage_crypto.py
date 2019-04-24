@@ -1,6 +1,6 @@
 from alpha_vantage.cryptocurrencies import CryptoCurrencies
 import time as timer
-import socket, requests, lxml
+import socket, requests
 from bs4 import BeautifulSoup
 from random import randint
 '''
@@ -46,7 +46,14 @@ class AlphaInputs():
 		return out_array
 		#print(out_array)
 	def get_crypto_markets(self):
-		r = requests.get(self.link_markets_crypto,"lxml")
+		if isBehindFirewall():
+			proxies = {
+			'http' : 'http://proxy-us.intel.com:911',
+			'https' : 'https://proxy-us.intel.com:912',
+			}
+			r = requests.get(self.link_markets_crypto,"lxml", proxies=proxies)
+		else:
+			r = requests.get(self.link_markets_crypto,"lxml")
 		soup = BeautifulSoup(r.content).get_text()
 		soup = soup.split("\r\n")
 		soup.pop(0)
@@ -161,5 +168,5 @@ class Crypto_Generate():
 #-test line#print(c.get_daily("BTC","USD"))
 
 #-test line#alphainputs = AlphaInputs()
-#-test line#alphainputs.get_crypto_symbols() 
-#-test line#alphainputs.get_crypto_markets() 
+#-test line#print(alphainputs.get_crypto_symbols())
+#-test line#print(alphainputs.get_crypto_markets())
