@@ -10,6 +10,14 @@ from random import randint
 '''
 
 class Crypto_Generate():
+
+	def isBehindFirewall():
+		host_name = socket.gethostname()
+		host_ip = "-"+socket.gethostbyname(host_name)
+		#-test line#print(host_ip)
+		if host_ip.find("-10.") > -1:
+			return True
+		return False
 	markets = [ ["AED", "United Arab Emirates Dirham"], ["AFN", "Afghan Afghani"], ["ALL", "Albanian Lek"], ["AMD", "Armenian Dram"], 
 	["ANG", "Netherlands Antillean Guilder"], ["AOA", "Angolan Kwanza"], ["ARS", "Argentine Peso"], ["AUD", "Australian Dollar"], 
 	["AWG", "Aruban Florin"], ["AZN", "Azerbaijani Manat"], ["BAM", "Bosnia-Herzegovina Convertible Mark"], ["BBD", "Barbadian Dollar"], 
@@ -70,6 +78,12 @@ class Crypto_Generate():
 	#~~as well. This was added to avoid retrying failed attempts as it caused known good requests to fail directly
 	#~~afterwards. 
 	crypto = CryptoCurrencies(api_key,0)
+	if isBehindFirewall():
+		proxies = {
+		'http' : 'https://proxy-us.intel.com:911',
+		'https' : 'https://proxy-us.intel.com:912',
+		}
+		crypto.set_proxy(proxies)
 	market = "JPY"
 
 	def get_daily(self,symbol,market):
