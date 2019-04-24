@@ -8,4 +8,5 @@ app_name = "home"
 urlpatterns = [
     path('', views.home, name=app_name),
     path('tester', views.testing, name='testing_fxn'),
+    path('dropdowns', views.get_dropdown_options, name='dropdown_options'),
 ]
