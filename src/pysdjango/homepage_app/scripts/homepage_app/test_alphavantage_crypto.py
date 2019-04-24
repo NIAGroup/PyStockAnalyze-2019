@@ -1,5 +1,6 @@
 from alpha_vantage.cryptocurrencies import CryptoCurrencies
 import time as timer
+import socket
 from random import randint
 '''
 #### CryptoCurrencies Methods:																####
@@ -80,7 +81,7 @@ class Crypto_Generate():
 	crypto = CryptoCurrencies(api_key,0)
 	if isBehindFirewall():
 		proxies = {
-		'http' : 'https://proxy-us.intel.com:911',
+		'http' : 'http://proxy-us.intel.com:911',
 		'https' : 'https://proxy-us.intel.com:912',
 		}
 		crypto.set_proxy(proxies)
