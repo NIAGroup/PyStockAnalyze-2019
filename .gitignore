@@ -6,4 +6,4 @@ activate
 *.sublime-workspace
 .idea/
 src/sandbox/*
-.vscode/settings.json
+.vscode/*
