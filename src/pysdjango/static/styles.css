@@ -1,0 +1,14 @@
+header {
+	background-color: blue;
+	width:100%;
+	padding: 0;
+}
+.App_Name {
+	margin-left: 10px;
+	padding: 0;
+	color:#fff;
+}
+h1 {
+	margin: 0;
+	color:#000;
+}
