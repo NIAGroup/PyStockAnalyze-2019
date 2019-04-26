@@ -1,5 +1,34 @@
 {% extends 'home.html' %}
 
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'google_db_styles.css' %}">
+
 {% block body %}
-    <p>Testing</p>
+
+
+
+<HTML>
+    <div class="topnav">
+        <a class="active" href="#stocks">Stocks</a>
+        <a href="#content">Content</a>
+        <input type="text" placeholder="Search..">
+    </div>
+
+
+    <table>
+        <tr>
+            <th>Article</th>
+            <th>Matching Contents</th>
+        </tr>
+        <tr>
+            <td>TechNewz</td>
+            <td>Intel is killin the game.</td>
+        </tr>
+        <tr>
+            <td>Gadget Club</td>
+            <td>5.0 GHz, nuff said.</td>
+        </tr>
+    </table>
+</HTML>
+
 {% endblock %}
