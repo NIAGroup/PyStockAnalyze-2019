@@ -1,9 +1,10 @@
-body {
+html, body {
 	/*font-family: 'Open Sans', sans-serif;*/
 	/*color: #474747;-->*/
 	margin: 0;
 	padding: 0;
 	background-color: #E8E8E8;
+	height: 100%;
 }
 
 
@@ -12,12 +13,20 @@ h1 {
 	font-family: 'Pacifico', cursive;
 }
 
-
 #content_pane {
 	width: 80%;
 	margin: 0 auto 0 auto;
 	padding: 0px;
 	background-color: white;
+	height: 100%;
+}
+
+
+#user_pane {
+	background: #151515;
+	height: 18pt;
+	width: 100%;
+	bottom: 0;
 }
 
 #banner_pane .cycle-slideshow {
@@ -70,8 +79,13 @@ h1 {
 
 .cycle-overlay { 
     font-family: tahoma, arial;
-    position: absolute; bottom: 0; width: 100%; z-index: 600;
-    background: black; color: white; padding: 15px; opacity: .5;
+    position: absolute;
+    bottom: 0; width: 100%;
+    z-index: 600;
+    background: black;
+    color: white;
+    padding: 15px;
+    opacity: .5;
 }
 
 .cycle-pager .cycle-pager-active {background: #FFFFFF;}
