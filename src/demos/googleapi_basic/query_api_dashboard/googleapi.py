@@ -12,15 +12,19 @@ import pprint
 class CSEQuery:
 	def cse_search(search_string):
 		# Example of a string to query google with
-		cse_query_str = search_string; #"INTC"
+		cse_query_str = search_string
+		httpreq = None
 
-		# Example of a proxy object
-		proxy_info = httplib2.ProxyInfo(proxy_type=httplib2.socks.PROXY_TYPE_HTTP,
-			proxy_host=localwebproxy.global_proxy_host,
-			proxy_port=localwebproxy.global_proxy_port)
+		if localwebproxy.proxy_enabled == True:
+			# Example of a proxy object
+			proxy_info = httplib2.ProxyInfo(proxy_type=httplib2.socks.PROXY_TYPE_HTTP,
+				proxy_host=localwebproxy.global_proxy_host,
+				proxy_port=localwebproxy.global_proxy_port)
 
-		# Example of an http request object
-		httpreq = httplib2.Http(proxy_info = proxy_info)
+			# Example of an http request object
+			httpreq = httplib2.Http(proxy_info = proxy_info)
+		else:
+			httpreq = httplib2.Http()
 
 		# Google API CSE object construction
 		service = build(serviceName='customsearch',
