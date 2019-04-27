@@ -1,7 +1,10 @@
-from googleapiclient.discovery import build
 
+# Required packages for importing personal information that need not be uploaded to the internet via the public git history
+from googleapiclient.discovery import build
 from googleapi_basic.localenv import localapikeys
 from googleapi_basic.localenv import localwebproxy
+
+# Required packages for working with HTTP requests
 import httplib2, requests, json
 
 import pprint
