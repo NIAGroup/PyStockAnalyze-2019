@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'query_api_dashboard',
+    'query_api_dashboard.apps.QueryApiDashboardConfig',
 ]
 
 MIDDLEWARE = [

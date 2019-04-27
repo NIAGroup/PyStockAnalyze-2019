@@ -30,7 +30,24 @@ from .googleapi import CSEQuery
 # 3 | Simple Function Based View (FBV) Example
 # =============================================================================
 def dashboard(request):
-	return render(request, 'query_api_dashboard/dashboard.html')
+	template_name = 'query_api_dashboard/dashboard.html'
+
+	if request.method == 'GET':
+		form = MainForm()
+		return render(request, template_name, {'form': form})
+
+	elif request.method == 'POST':
+		form = MainForm(request.POST)
+		text = ""
+		if form.is_valid():
+			text = form.cleaned_data['post']
+			text = CSEQuery.cse_format(text)
+			form = MainForm() # Reset form input
+
+		args = {'form' : form, 'text' : text}
+		return render(request, template_name, args)
+
+	
 
 # =============================================================================
 # 4 | Simple Class Based View (CBV) Example
@@ -48,7 +65,7 @@ class QueryView(TemplateView):
 		if form.is_valid():
 			text = form.cleaned_data['post']
 			text = CSEQuery.cse_format(text)
-			form = MainForm()
+			form = MainForm() # Reset form input
 		
 		args = {'form' : form, 'text' : text}
 		return render(request, self.template_name, args)

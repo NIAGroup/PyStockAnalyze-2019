@@ -1,5 +1,5 @@
-"""	Google API Demo Example View
-	The View that generates the HTML content to be served to the browser.
+"""	Google API Demo Example URL Configuration
+	The URL configuration for the google API demo.
 """
 
 # =============================================================================
@@ -30,5 +30,5 @@ app_name = 'query_api_dashboard'
 
 urlpatterns = [
 	path('fbv', dashboard_fbv, name='query_fbv'),
-	path('', QueryView.as_view(), name='query_cbv'),
+	path('cbv', QueryView.as_view(), name='query_cbv'),
 ]
