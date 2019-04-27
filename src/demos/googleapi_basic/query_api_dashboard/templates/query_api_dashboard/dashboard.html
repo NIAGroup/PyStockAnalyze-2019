@@ -1,0 +1,16 @@
+{% extends 'query_api_dashboard/base.html' %}
+
+{% block form_input %}
+
+<form method="POST" >
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Submit" />
+</form>
+{% endblock %}
+
+{% block form_output %}
+<p>
+	{{ text|default_if_none:"" }}
+</p>
+{% endblock %}
