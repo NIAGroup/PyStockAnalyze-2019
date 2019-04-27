@@ -41,6 +41,7 @@ class CSEQuery:
 		cse_query_str = search_string
 		httpreq = None
 
+		# Utilize proxy if enabled
 		if localwebproxy.proxy_enabled == True:
 			# Example of a proxy object
 			proxy_info = httplib2.ProxyInfo(proxy_type=httplib2.socks.PROXY_TYPE_HTTP,

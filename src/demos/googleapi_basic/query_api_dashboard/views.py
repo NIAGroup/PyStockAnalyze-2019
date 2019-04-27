@@ -33,7 +33,7 @@ def dashboard(request):
 	return render(request, 'query_api_dashboard/dashboard.html')
 
 # =============================================================================
-# 3 | Simple Class Based View (CBV) Example
+# 4 | Simple Class Based View (CBV) Example
 # =============================================================================
 class QueryView(TemplateView):
 	template_name = 'query_api_dashboard/dashboard.html'
