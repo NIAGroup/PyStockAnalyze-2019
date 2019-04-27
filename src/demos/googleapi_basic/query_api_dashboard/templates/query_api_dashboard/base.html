@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>GoogleAPI Demo</title>
+
+	{% load static %}
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+		<h1>Simple Google API Demo</h1>
+		<p>This simple tutorial demonstrates how to fetch google data and display it onto a webpage in a listed format. This demo allows the user to query google, specifying search terms.</p>
+		<p>To understand Django dynamic AJAX content:
+			<a href="https://realpython.com/django-and-ajax-form-submissions/">Django and AJAX Form Submissions - Say 'Goodbye' to the Page Refresh</a>
+		</p>
+
+
+		<hr>
+		<h1>Form Input</h1>
+		{% block form_input %}
+		{% endblock %}
+		<hr>
+		<h1>Output</h1>
+		<div id="results">
+		{% block form_output %}
+		{% endblock %}
+		</div>
+
+</body>
+
+<footer>
+	<!-- Dynamic AJAX Form Submission -->
+	<script src="{% static 'query_api_dashboard/scripts/main.js' %}"></script>
+
+</footer>
+</html>
