@@ -1,16 +1,40 @@
+"""	Google API Demo Example View
+	The View that generates the HTML content to be served to the browser.
+"""
+
+# =============================================================================
+# 1 | Document Metadata
+# =============================================================================
+__author__    = 'Lennard Streat'
+__copyright__ = 'Network of Intel African Americans 2019, PyStockAnalyze Project'
+__credits__   = ['Lennard Streat', 'Princton Brennan']
+__license__   = 'MIT'
+__version__   = '1.0'
+__email__     = 'nia.stem.club'
+
+# =============================================================================
+# 2 | Imports
+# =============================================================================
+# DJango imports
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 
-from query_api_dashboard.forms import MainForm
-from query_api_dashboard.googleapi import CSEQuery
+# Local imports
+from .forms import MainForm
+from .googleapi import CSEQuery
 
-# Create your views here.
+
+# =============================================================================
+# 3 | Simple Function Based View (FBV) Example
+# =============================================================================
 def dashboard(request):
 	return render(request, 'query_api_dashboard/dashboard.html')
 
-
+# =============================================================================
+# 3 | Simple Class Based View (CBV) Example
+# =============================================================================
 class QueryView(TemplateView):
 	template_name = 'query_api_dashboard/dashboard.html'
 
