@@ -1,0 +1,24 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>User Registration</title>
+</head>
+
+<body>
+	<h1>PyStockAnalyze</h1>
+	<div class="col-md-8">
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
+	</div>
+
+	{% block content %}
+	<a href="{% url 'users_app:register' %}">Go To Registration</a>
+	{% endblock content %}
+</body>
+</html>
