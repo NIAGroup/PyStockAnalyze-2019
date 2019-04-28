@@ -24,17 +24,20 @@ http://127.0.0.1:8000/home
 `python manage.py startapp name_of_app`
 
 2. Once you app is created, the following directories will be created along with it:
-`
-name_of_app/
-    __init__.py
-    admin.py
-    apps.py
-    migrations/
-        __init__.py
-    models.py
-    tests.py
-    views.py
-`
+
+<p class='tab'>&emsp;name_of_app/</p>
+<p class='tab'>&emsp;&emsp;__init__.py</p>
+<p class='tab'>&emsp;&emsp;admin.py</p>
+<p class='tab'>&emsp;&emsp;apps.py</p>
+<p class='tab'>&emsp;&emsp;migrations/</p>
+<p class='tab'>&emsp;&emsp;&emsp; __init__.py</p>
+<p class='tab'>&emsp;&emsp;models.py</p> 
+<p class='tab'>&emsp;&emsp;tests.py</p>
+<p class='tab'>&emsp;&emsp;views.py</p>
+
+
+
+
 
 3. the urls.py file must be created using :
 `touch urls.py`
