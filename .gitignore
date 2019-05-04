@@ -8,3 +8,4 @@ activate
 src/sandbox/*
 .vscode/*
 src/demos/*
+*.swp
