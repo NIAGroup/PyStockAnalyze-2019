@@ -4,7 +4,6 @@ activate
 *.sqlite3
 *.sublime-project
 *.sublime-workspace
-.idea/
+.idea
+
 src/sandbox/*
-.vscode/*
-src/demos/*

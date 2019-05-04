@@ -4,7 +4,12 @@ activate
 *.sqlite3
 *.sublime-project
 *.sublime-workspace
+<<<<<<< HEAD
+.idea
+
+=======
 .idea/
+>>>>>>> google_database
 src/sandbox/*
 .vscode/*
 src/demos/*
