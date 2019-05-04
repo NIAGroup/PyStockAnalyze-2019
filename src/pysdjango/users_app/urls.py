@@ -18,6 +18,9 @@ __email__     = 'nia.stem.club'
 from django.urls import path
 from . import views
 
+# Support for serving static image files
+from django.conf import settings
+from django.conf.urls.static import static
 
 # =============================================================================
 # 3 | Define URLConf
@@ -29,3 +32,5 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('', views.temp_home, name='user-home'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
