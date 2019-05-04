@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'homepage_app',
-    'google_database',
+    # Project-Specific Applications
+    #'users_app.apps.UsersAppConfig',
+    'stockview_app.apps.StockviewAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'assets'),
 )
+
+
+
+#MEDIA_ROOT = os.path.join(parent_dir, 'media/')
+MEDIA_URL = '/media/'
