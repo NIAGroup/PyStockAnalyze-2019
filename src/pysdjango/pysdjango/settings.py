@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Project-Specific Applications
     #'users_app.apps.UsersAppConfig',
     'stockview_app.apps.StockviewAppConfig',
+    'stockdb_app.apps.StockdbAppConfig',
 ]
 
 MIDDLEWARE = [
