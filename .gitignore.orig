@@ -1,0 +1,10 @@
+*.pyc
+build/
+activate
+*.sqlite3
+*.sublime-project
+*.sublime-workspace
+.idea
+src/sandbox/*
+.vscode/*
+src/demos/*

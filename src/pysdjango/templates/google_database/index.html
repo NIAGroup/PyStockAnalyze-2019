@@ -1,20 +1,20 @@
-{% extends 'home.html' %}
+{% extends 'google_database/base.html' %}
 
-{% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'google_database/google_db_styles.css' %}">
+{% block title %}Google Database{% endblock %}
 
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'google_database/google_db_styles.css' %}">
+{% endblock %}
 
 {% block body %}
 
 
-<HTML>
-
-    <div id="#content">
-        <p>test</p>
-    </div>
+<div id="#content">
+    <p>test</p>
+</div>
 
 
-    <!--
+<!--
     <div class="topnav">
         <a class="active" href="#stocks">Stocks</a>
         <a href="#content">Content</a>
@@ -37,6 +37,5 @@
         </tr>
     </table>
 -->
-</HTML>
 
 {% endblock %}
