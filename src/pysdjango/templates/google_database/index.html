@@ -2,7 +2,7 @@
 
 {% block title %}Google Database{% endblock %}
 
-{% block style %}
+{% block extraHead %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'google_database/google_db_styles.css' %}"/>
 {% endblock %}
@@ -10,8 +10,20 @@
 {% block body %}
 
 
-<div id="#test1">
+<div id="context">
     <p>test</p>
+    <div id="row0">
+        <div class="column">
+            <div id="left">
+                <p>test</p>
+            </div>
+        </div>
+        <div class="column">
+            <div id="middle">
+                <p>test</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 
