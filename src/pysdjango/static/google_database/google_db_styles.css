@@ -28,3 +28,12 @@ body{
 #col3 {
 	background-color: blue;
 }
+
+#searchHeight {
+	position: relative;
+	top: 75px;
+}
+
+.searchBar {
+	min-height: 7vh;
+}
