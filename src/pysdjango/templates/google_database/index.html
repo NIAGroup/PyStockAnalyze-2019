@@ -9,46 +9,17 @@
 
 {% block body %}
 
-
-<div id="context">
-    <p>test</p>
-    <div id="row0">
-        <div class="column">
-            <div id="left">
-                <p>test</p>
-            </div>
-        </div>
-        <div class="column">
-            <div id="middle">
-                <p>test</p>
-            </div>
-        </div>
-    </div>
-</div>
+    <div class="row flex">
+      <div id="col1" class="col l2">
+        <p>COLUMN 1</p>
+      </div>
+      <div id="col2" class="col l9">
+        <p>COLUMN 2</p>
+      </div>
+      <div id="col3" class="col l1">
+        <p>COLUMN3</p>
+      </div>
 
 
-<!--
-    <div class="topnav">
-        <a class="active" href="#stocks">Stocks</a>
-        <a href="#content">Content</a>
-        <input type="text" placeholder="Search..">
-    </div>
-
-
-    <table>
-        <tr>
-            <th>Article</th>
-            <th>Matching Contents</th>
-        </tr>
-        <tr>
-            <td>TechNewz</td>
-            <td>Intel is killin the game.</td>
-        </tr>
-        <tr>
-            <td>Gadget Club</td>
-            <td>5.0 GHz, nuff said.</td>
-        </tr>
-    </table>
--->
 
 {% endblock %}

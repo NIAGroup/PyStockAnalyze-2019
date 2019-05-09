@@ -1,31 +1,30 @@
-#context {
-	width: 100%;
-	position: relative;
-	background-color: rgb(8, 255, 62);
+html{
+	padding: 0;
+	margin: 0;
 }
-
-#row0 {
-	display:flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	width: 100%;
-}
-
-.column {
-	display: flex;
-	flex-direction: column;
-	flex-basis: 100%;
-}
-
-#left {
-	width: 20%;
-	background-color: rgb(9, 202, 202);
-}
-#middle {
-	width: 100%;
-	background-color: darkblue;
-}
-
 body{
 	background-color: rgb(27, 72, 109);
+	padding: 0;
+	margin: 0;
+}
+
+.constrict {
+	width: 70%;
+}
+
+.flex {
+	display: flex;
+	min-height: 100vh;
+}
+
+#col1 {
+	background-color: red;
+}
+
+#col2 {
+	background-color: green;
+}
+
+#col3 {
+	background-color: blue;
 }
