@@ -22,7 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('homepage_app.urls'), name='home_view'),
-    path('google_database/', include('google_database.urls'), name='google_db'),
+    path('google/db/', include('google_database.urls'), name='google_db'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
