@@ -7,5 +7,5 @@ activate
 .idea/
 src/sandbox/*
 .vscode/*
-src/demos/*
+**/localenv/*
 *.swp
