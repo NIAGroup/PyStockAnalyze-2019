@@ -1,41 +1,29 @@
+{% extends 'google_database/base.html' %}
 
+{% block title %}Google Database{% endblock %}
+
+{% block extraHead %}
 {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'google_database/google_db_styles.css' %}">
-
+<link rel="stylesheet" type="text/css" href="{% static 'google_database/google_db_styles.css' %}"/>
+{% endblock %}
 
 {% block body %}
 
-
-<HTML>
-
-    <div id="#content">
-        <p>test</p>
-    </div>
-
-
-    <!--
-    <div class="topnav">
-        <a class="active" href="#stocks">Stocks</a>
-        <a href="#content">Content</a>
-        <input type="text" placeholder="Search..">
-    </div>
-
-
-    <table>
-        <tr>
-            <th>Article</th>
-            <th>Matching Contents</th>
-        </tr>
-        <tr>
-            <td>TechNewz</td>
-            <td>Intel is killin the game.</td>
-        </tr>
-        <tr>
-            <td>Gadget Club</td>
-            <td>5.0 GHz, nuff said.</td>
-        </tr>
-    </table>
--->
-</HTML>
+    <div class="row flex">
+      <div id="col1" class="col l2">
+        <p>COLUMN 1</p>
+      <form id="searchHeight">
+        <div class="input-field">
+          <input id="search" class="searchBar" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        </div>
+      </form>
+      </div>
+      <div id="col2" class="col l9">
+        <p>COLUMN 2</p>
+      </div>
+      <div id="col3" class="col l1">
+        <p>COLUMN3</p>
+      </div>
 
 {% endblock %}
