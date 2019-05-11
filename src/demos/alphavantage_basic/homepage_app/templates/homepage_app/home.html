@@ -52,7 +52,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
-    <!--a class="waves-effect waves-light btn" id="test_btn1" onclick="call_view_test()" method="GET">Run Test Function</a-->
     <container>
     <div>
       <table>
@@ -75,8 +74,10 @@
               </div>
           </td>
           <td>
-              <!-- adding function test button -->
-            <a class="waves-effect waves-light btn" id="test_btn" onclick="test_fxn()">Run Test</a>
+              <!-- adding function test button for getting cryptocurrency values -->
+            <a class="waves-effect waves-light btn" id="test_btn1" onclick="test_fxn()">Run Test</a>
+              <!-- adding function test button for getting compare value of crypto->physical currency worth -->
+            <a class="waves-effect waves-light btn" id="test_btn2" onclick="compare_crypto_worth()">Compare Currency</a>
           </td>
         </tr>
       </table>
@@ -150,6 +151,31 @@
     <!-- Test Jquery run -->
     <script name="runjs" type="text/javascript">
       {% block jquery %}
+      function compare_crypto_worth(){
+        var symbols = [];
+        var tbl_body = $("#results_table_body");
+        var rows = tbl_body.find($("tr"));
+        rows.each(function(){
+
+          //console.log($(this).find($("td:nth-child(4)")).text());
+          var holder = $(this).find($("td:nth-child(4)")).text().split(" ")
+          symbols.push(holder[1])
+        });
+        console.log(symbols.toString())
+        $.ajax({
+            method: 'GET',
+            url: 'forex',
+            data:{"markets":"the markets"},
+            success:function(data){
+                console.log(data.out)
+            },
+        });
+        //re-enables test button after run has completed
+        $("#test_btn1").html("Run Test");
+        $('#test_btn1').attr("class","waves-effect waves-light btn");
+        $('#test_btn2').attr("class","waves-effect waves-light btn");
+      }
+
       function getDrops(){
         $.ajax({
               method: 'GET',
@@ -192,8 +218,9 @@
         //The function below changes the test button text and disabled it while the alph_vantage
         //function is running. This helps avoid conflicting requests errors and longer delays.
         $(document).ajaxSend(function(event, request, settings) {
-          $('#test_btn').html("Running...");
-          $('#test_btn').attr("class","waves-effect waves-light btn disabled");
+          $('#test_btn1').html("Running...");
+          $('#test_btn1').attr("class","waves-effect waves-light btn disabled");
+          $('#test_btn2').attr("class","waves-effect waves-light btn disabled");
         });
 
         //ajax calls are used to make changes on the fly that call other functions outside of the html file
@@ -258,8 +285,9 @@
                 $("#results_table_body").append(content)
               }
               //re-enables test button after run has completed
-              $("#test_btn").html("Run Test");
-              $('#test_btn').attr("class","waves-effect waves-light btn");
+              $("#test_btn1").html("Run Test");
+              $('#test_btn1').attr("class","waves-effect waves-light btn");
+              $('#test_btn2').attr("class","waves-effect waves-light btn");
               //binds function to each row to remove on row click
               $(document).on("click", "tr.entry_rows" , function() {
                   $(this).remove();

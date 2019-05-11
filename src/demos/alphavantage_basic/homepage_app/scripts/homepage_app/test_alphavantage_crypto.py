@@ -1,4 +1,5 @@
 from alpha_vantage.cryptocurrencies import CryptoCurrencies
+from alpha_vantage.foreignexchange import ForeignExchange
 import time as timer
 import socket, requests
 from bs4 import BeautifulSoup
@@ -67,6 +68,24 @@ class AlphaInputs():
 		return out_array
 		#print(out_array)
 
+class Forex_Comparison():
+	api_key = str(randint(0,320000))
+	forex = ForeignExchange(api_key,0)
+	if isBehindFirewall():
+		print("behind firewall")
+		proxies = {
+		'http' : 'http://proxy-us.intel.com:911',
+		'https' : 'https://proxy-us.intel.com:912',
+		}
+		forex.set_proxy(proxies)
+	
+	def sort_by_value(self,symbols):
+		sorted_dict = {}
+		for symbol in symbols:
+			result = self.forex.get_currency_exchange_rate(symbol,"USD")
+			#print(result[0]["5. Exchange Rate"])
+			sorted_dict[symbol] = round(float(result[0]["5. Exchange Rate"]),2)
+		return sorted_dict
 class Crypto_Generate():
 
 	#~~generates a random api key each time a call is made. The key is not specific, but a current theory is
@@ -77,6 +96,7 @@ class Crypto_Generate():
 	#~~afterwards. 
 	crypto = CryptoCurrencies(api_key,0)
 	if isBehindFirewall():
+		print("behind firewall")
 		proxies = {
 		'http' : 'http://proxy-us.intel.com:911',
 		'https' : 'https://proxy-us.intel.com:912',
@@ -170,3 +190,7 @@ class Crypto_Generate():
 #-test line#alphainputs = AlphaInputs()
 #-test line#print(alphainputs.get_crypto_symbols())
 #-test line#print(alphainputs.get_crypto_markets())
+
+#-test line#symbols = ["AUD","AED","BRL","CAD"]
+#-test line#ex_mkt = Forex_Comparison()
+#-test line#print(ex_mkt.sort_by_value(symbols)) 

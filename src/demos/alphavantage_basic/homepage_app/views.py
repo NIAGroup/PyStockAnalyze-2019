@@ -30,3 +30,9 @@ def testing(request,*args,**kwargs):
 	vals = cry_g.get_daily(symbol,market)
 	return JsonResponse(vals)
 
+
+def compare_currency(request,*args,**kwargs):
+	currency_symbols = request.GET.get('markets')
+	print(f'in views: {currency_symbols}')
+	vals = {"out" : "duhduh"}
+	return JsonResponse(vals)
