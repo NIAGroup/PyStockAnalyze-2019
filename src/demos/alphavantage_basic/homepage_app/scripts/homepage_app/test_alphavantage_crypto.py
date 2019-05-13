@@ -1,7 +1,7 @@
 from alpha_vantage.cryptocurrencies import CryptoCurrencies
 from alpha_vantage.foreignexchange import ForeignExchange
 import time as timer
-import socket, requests
+import socket, requests, collections
 from bs4 import BeautifulSoup
 from random import randint
 '''
@@ -85,6 +85,9 @@ class Forex_Comparison():
 			result = self.forex.get_currency_exchange_rate(symbol,"USD")
 			#print(result[0]["5. Exchange Rate"])
 			sorted_dict[symbol] = round(float(result[0]["5. Exchange Rate"]),2)
+			timer.sleep(3)
+		sorted_dict = sorted(sorted_dict.items(), key=lambda arr:arr[1])
+
 		return sorted_dict
 class Crypto_Generate():
 

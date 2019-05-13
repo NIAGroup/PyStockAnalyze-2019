@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import JsonResponse
-from .scripts.homepage_app.test_alphavantage_crypto import Crypto_Generate, AlphaInputs
+from .scripts.homepage_app.test_alphavantage_crypto import Crypto_Generate, AlphaInputs, Forex_Comparison
 
 # Create your views here.
 #Hi guys
@@ -33,6 +33,9 @@ def testing(request,*args,**kwargs):
 
 def compare_currency(request,*args,**kwargs):
 	currency_symbols = request.GET.get('markets')
-	print(f'in views: {currency_symbols}')
-	vals = {"out" : "duhduh"}
+	currency_symbols = currency_symbols.split(",")
+	forex_comparison = Forex_Comparison()
+	vals = forex_comparison.sort_by_value(currency_symbols)
+	vals = {"out" : vals}
+	print(vals)
 	return JsonResponse(vals)

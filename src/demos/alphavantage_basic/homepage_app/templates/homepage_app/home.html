@@ -152,6 +152,9 @@
     <script name="runjs" type="text/javascript">
       {% block jquery %}
       function compare_crypto_worth(){
+        $('#test_btn2').html("Running...");
+        $('#test_btn1').attr("class","waves-effect waves-light btn disabled");
+        $('#test_btn2').attr("class","waves-effect waves-light btn disabled");
         var symbols = [];
         var tbl_body = $("#results_table_body");
         var rows = tbl_body.find($("tr"));
@@ -162,16 +165,45 @@
           symbols.push(holder[1])
         });
         console.log(symbols.toString())
+
         $.ajax({
             method: 'GET',
             url: 'forex',
-            data:{"markets":"the markets"},
+            data:{"markets":symbols.toString()},
             success:function(data){
-                console.log(data.out)
+                var arr = data.out;
+                var id = "#tbl_row_"+arr[0][0];
+                var red = 0xff0000;
+                var green = 0x00ff00;
+                var color_range = 255;
+                var inc = Math.floor(color_range/(arr.length-1))
+                var color = green;
+
+                //console.log(red.toString(16))
+                //console.log(red-green)
+                
+                $.each(data.out, function(index, value){
+                  console.log("array: " +arr[index][0])
+                  id = "#tbl_row_"+arr[index][0];
+                  if(index == 0){
+                    $(id).attr("bgcolor","#00"+ color.toString(16));
+                    console.log(arr[index][0] +": 0 - " +color.toString(16))
+                    console.log($(id).text)
+                    color+=inc
+                  }
+                  else{
+                    $(id).attr("bgcolor","#"+ color.toString(16) + "0000");
+                    console.log(arr[index][0] +" >0 - " +color.toString(16))
+                    console.log($(id).text)
+                    color+=inc
+                  }
+                  //console.log("value: " +value[0])
+                });
             },
         });
         //re-enables test button after run has completed
         $("#test_btn1").html("Run Test");
+        $("#test_btn2").html("Compare Currency");
         $('#test_btn1').attr("class","waves-effect waves-light btn");
         $('#test_btn2').attr("class","waves-effect waves-light btn");
       }
@@ -269,8 +301,10 @@
                 
                 for(i=0; i<1; i++){
                     var row = i + rowCount + 1
+                    var container0 = data.open_rate.split(" ")
+                    container0 = container0[1]
                     content += " \
-                    <tr class='entry_rows'> \
+                    <tr class='entry_rows' id='tbl_row_" + container0 +"'> \
                       <td>" +  "<font color='black'>" + row + " </font>" + '</td> \
                       <td>' +  "<font color='black'>" + data.symbol + " </font>" + '</td> \
                       <td>' +  "<font color='black'>" + data.name + " </font>" + '</td> \
