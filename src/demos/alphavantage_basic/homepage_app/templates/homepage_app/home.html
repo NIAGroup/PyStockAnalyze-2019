@@ -152,9 +152,13 @@
     <script name="runjs" type="text/javascript">
       {% block jquery %}
       function compare_crypto_worth(){
-        $('#test_btn2').html("Running...");
-        $('#test_btn1').attr("class","waves-effect waves-light btn disabled");
-        $('#test_btn2').attr("class","waves-effect waves-light btn disabled");
+        //The function below changes the test button text and disabled it while the alph_vantage
+        //function is running. This helps avoid conflicting requests errors and longer delays.
+        //$(document).ajaxSend(function(event, request, settings) {
+          $('#test_btn2').html("Running...");
+          $('#test_btn1').attr("class","waves-effect waves-light btn disabled");
+          $('#test_btn2').attr("class","waves-effect waves-light btn disabled");
+        //});
         var symbols = [];
         var tbl_body = $("#results_table_body");
         var rows = tbl_body.find($("tr"));
@@ -181,31 +185,36 @@
 
                 //console.log(red.toString(16))
                 //console.log(red-green)
+                //id = "#tbl_row_"+arr[arr.length-1][0];
+                //$(id).attr("bgcolor","#00"+ color.toString(16));
                 
                 $.each(data.out, function(index, value){
                   console.log("array: " +arr[index][0])
                   id = "#tbl_row_"+arr[index][0];
-                  if(index == 0){
+                  if(index == arr.length-1){
                     $(id).attr("bgcolor","#00"+ color.toString(16));
-                    console.log(arr[index][0] +": 0 - " +color.toString(16))
-                    console.log($(id).text)
-                    color+=inc
                   }
                   else{
-                    $(id).attr("bgcolor","#"+ color.toString(16) + "0000");
+                    $(id).attr("bgcolor","#ffffff");
                     console.log(arr[index][0] +" >0 - " +color.toString(16))
                     console.log($(id).text)
-                    color+=inc
                   }
-                  //console.log("value: " +value[0])
                 });
+                $("#test_btn1").html("Run Test");
+                $("#test_btn2").html("Compare Currency");
+                $('#test_btn1').attr("class","waves-effect waves-light btn");
+                $('#test_btn2').attr("class","waves-effect waves-light btn");
             },
+            error: function (textStatus, errorThrown) {
+                alert("It seems there was an error in your call due to timing. \nPlease wait 2-5 minutes before running again.")
+                $("#test_btn1").html("Run Test");
+                $("#test_btn2").html("Compare Currency");
+                $('#test_btn1').attr("class","waves-effect waves-light btn");
+                $('#test_btn2').attr("class","waves-effect waves-light btn");
+            }
         });
         //re-enables test button after run has completed
-        $("#test_btn1").html("Run Test");
-        $("#test_btn2").html("Compare Currency");
-        $('#test_btn1').attr("class","waves-effect waves-light btn");
-        $('#test_btn2').attr("class","waves-effect waves-light btn");
+
       }
 
       function getDrops(){
@@ -249,11 +258,11 @@
 
         //The function below changes the test button text and disabled it while the alph_vantage
         //function is running. This helps avoid conflicting requests errors and longer delays.
-        $(document).ajaxSend(function(event, request, settings) {
+        //$(document).ajaxSend(function(event, request, settings) {
           $('#test_btn1').html("Running...");
           $('#test_btn1').attr("class","waves-effect waves-light btn disabled");
           $('#test_btn2').attr("class","waves-effect waves-light btn disabled");
-        });
+        //});
 
         //ajax calls are used to make changes on the fly that call other functions outside of the html file
         //this specific call is being used to reference the python code function in the views.py file which
@@ -320,6 +329,7 @@
               }
               //re-enables test button after run has completed
               $("#test_btn1").html("Run Test");
+              $("#test_btn2").html("Compare Currency");
               $('#test_btn1').attr("class","waves-effect waves-light btn");
               $('#test_btn2').attr("class","waves-effect waves-light btn");
               //binds function to each row to remove on row click
@@ -329,6 +339,13 @@
               });
             
             },
+            error: function (textStatus, errorThrown) {
+                alert("It seems there was an error in your call due to timing. \nPlease wait 2-5 minutes before running again.")
+                $("#test_btn1").html("Run Test");
+                $("#test_btn2").html("Compare Currency");
+                $('#test_btn1').attr("class","waves-effect waves-light btn");
+                $('#test_btn2').attr("class","waves-effect waves-light btn");
+            }
 
           });
         //-test_line//console.log("this is a test");
