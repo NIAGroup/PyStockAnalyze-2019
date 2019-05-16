@@ -23,12 +23,12 @@
 	</div>
 	<div id="col2" class="col l9">
 		<p>COLUMN 2</p>
-		{% for item in outputText %}
+		{% for item,desc in outputText %}
 		<div>
 			<div class="landscape">
 				<img src="{{ item }}">
 			</div>
-			<p>{{ descriptions }}</p>
+			<p>{{ desc }}</p>
 		</div>
 		{% endfor %}
 		<p>
