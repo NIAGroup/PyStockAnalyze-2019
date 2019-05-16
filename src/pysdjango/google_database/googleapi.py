@@ -21,8 +21,10 @@ __email__     = 'nia.stem.club'
 from googleapiclient.discovery import build
 
 # Required packages for working with HTTP requests
-import httplib2, requests, json, pprint
-
+import httplib2
+import requests
+import json
+import pprint as pp
 # Local imports
 from pysdjango.localenv import localuser
 from pysdjango.localenv import localapikeys
@@ -66,8 +68,19 @@ class CSEQuery:
 			).execute()
 
 		return resp
+	
+	def cse_images(resp):
+		images = []
+		for i in resp['items']:
+			try:
+				#print(i['pagemap']['cse_image'][0]['src'])
+				images.append(i['pagemap']['cse_image'][0]['src'])
+			except:
+				images.append(None)
+		return images
 
 	# Calls the CSE and converts the JSON object to a prettified string
 	def cse_format(search_string):
 		resp = CSEQuery.cse_search(search_string)
-		return pprint.pformat(resp)
+		images = CSEQuery.cse_images(resp)
+		return pp.pformat(resp, indent=4)
