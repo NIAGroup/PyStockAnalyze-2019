@@ -13,10 +13,10 @@ class Home(TemplateView):
 
     def post(self, request):
         inputText = request.POST.get('inputText')
-        outputText = CSEQuery.cse_format(inputText)
+        outputText,descriptions,tmp = CSEQuery.cse_format(inputText)
         inputText = ""  # Reset form input
 
-        args = {'inputText': inputText, 'outputText': outputText}
+        args = {'inputText': inputText, 'outputText': outputText, 'descriptions': descriptions, '': tmp}
         return render(request, self.template_name, args)
 
     def post_query_handler(request):

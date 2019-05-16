@@ -15,7 +15,7 @@
 		<form id="searchHeight" , method="POST">
 			<div class="input-field">
 				{% csrf_token %}
-				<input id="search" class="searchBar" type="search", name="inputText">
+				<input id="search" class="searchBar" type="search" , name="inputText">
 				<label class="label-icon" for="search"><i class="material-icons">search</i></label>
 
 			</div>
@@ -23,8 +23,16 @@
 	</div>
 	<div id="col2" class="col l9">
 		<p>COLUMN 2</p>
+		{% for item in outputText %}
+		<div>
+			<div class="landscape">
+				<img src="{{ item }}">
+			</div>
+			<p>{{ descriptions }}</p>
+		</div>
+		{% endfor %}
 		<p>
-			{{ outputText }}
+			{{ tmp }}
 		</p>
 	</div>
 	<div id="col3" class="col l1">

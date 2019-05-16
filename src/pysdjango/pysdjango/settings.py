@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'homepage_app',
-    'google_database',
+    'google_database.apps.GoogleDatabaseConfig',
 ]
 
 MIDDLEWARE = [

@@ -73,14 +73,24 @@ class CSEQuery:
 		images = []
 		for i in resp['items']:
 			try:
-				#print(i['pagemap']['cse_image'][0]['src'])
 				images.append(i['pagemap']['cse_image'][0]['src'])
 			except:
-				images.append(None)
+				images.append("/static/google_database/default-image.jpg")
 		return images
+
+	def cse_description(resp):
+		desc = []
+		for i in resp['items']:
+			try:
+				desc.append(i['pagemap']['metatags'][0]['og:description'])
+			except:
+				pass
+		return desc
 
 	# Calls the CSE and converts the JSON object to a prettified string
 	def cse_format(search_string):
 		resp = CSEQuery.cse_search(search_string)
 		images = CSEQuery.cse_images(resp)
-		return pp.pformat(resp, indent=4)
+		desc = CSEQuery.cse_description(resp)
+		#return pp.pformat(resp, indent=4)
+		return images,desc,resp
