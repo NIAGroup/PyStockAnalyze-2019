@@ -12,14 +12,9 @@ class Home(TemplateView):
         return render(request, self.template_name)
 
     def post(self, request):
-        inputText = Search(request.POST)
-        inputText.search = request.POST.get('inputText')
-        outputText = "Empty"
-        if inputText.is_valid():
-            outputText = inputText.cleaned_data['search']
-            print(outputText)
-            outputText = CSEQuery.cse_format(outputText)
-            inputText = Search()  # Reset form input
+        inputText = request.POST.get('inputText')
+        outputText = CSEQuery.cse_format(inputText)
+        inputText = ""  # Reset form input
 
         args = {'inputText': inputText, 'outputText': outputText}
         return render(request, self.template_name, args)
