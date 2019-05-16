@@ -3,27 +3,36 @@
 {% block title %}Google Database{% endblock %}
 
 {% block extraHead %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'google_database/google_db_styles.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'google_database/google_db_styles.css' %}" />
 {% endblock %}
 
 {% block body %}
 
-    <div class="row flex">
-      <div id="col1" class="col l2">
-        <p>COLUMN 1</p>
-      <form id="searchHeight">
-        <div class="input-field">
-          <input id="search" class="searchBar" type="search" required>
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-        </div>
-      </form>
-      </div>
-      <div id="col2" class="col l9">
-        <p>COLUMN 2</p>
-      </div>
-      <div id="col3" class="col l1">
-        <p>COLUMN3</p>
-      </div>
+<div class="row flex">
+	<div id="col1" class="col l2">
+		<p>COLUMN 1</p>
+		<form id="searchHeight", method="POST">
+			<div class="input-field">
+				{{ inputText }}
+				<input id="search" class="searchBar" type="search" required>
+				<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+			</div>
+		</form>
+	</div>
+	<div id="col2" class="col l9">
+		<p>COLUMN 2</p>
+		<p>
+			{{ outputText }}
+		</p>
+	</div>
+	<div id="col3" class="col l1">
+		<p>COLUMN3</p>
+	</div>
 
-{% endblock %}
+
+
+
+
+	<script src="{% static 'google_database/scripts/main.js' %}"></script>
+
+	{% endblock %}

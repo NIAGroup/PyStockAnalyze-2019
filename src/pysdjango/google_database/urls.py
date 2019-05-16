@@ -6,5 +6,5 @@ from . import views
 app_name = "google_database"
 
 urlpatterns = [
-    path('', views.index, name=app_name),
+    path('', Home().as_view, name=app_name),
 ]
