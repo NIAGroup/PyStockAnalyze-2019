@@ -70,7 +70,7 @@ class CSEQuery:
 		return resp
 	
 	def cse_imagesDescriptons(resp):
-		images = []
+		imageDesc = []
 		for i in resp['items']:
 			tmp = []
 			try:
@@ -82,12 +82,12 @@ class CSEQuery:
 				tmp.append(i['pagemap']['metatags'][0]['og:description'])
 			except:
 				pass
-			images.append(tmp)
-		return images
+			imageDesc.append(tmp)
+		return imageDesc
 
 	# Calls the CSE and converts the JSON object to a prettified string
 	def cse_format(search_string):
 		resp = CSEQuery.cse_search(search_string)
-		images = CSEQuery.cse_imagesDescriptons(resp)
+		imageDesc = CSEQuery.cse_imagesDescriptons(resp)
 		#return pp.pformat(resp, indent=4)
-		return images,desc,resp
+		return imageDesc,resp
