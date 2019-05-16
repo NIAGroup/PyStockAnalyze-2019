@@ -12,11 +12,12 @@
 <div class="row flex">
 	<div id="col1" class="col l2">
 		<p>COLUMN 1</p>
-		<form id="searchHeight", method="POST">
+		<form id="searchHeight" , method="POST">
 			<div class="input-field">
-				{{ inputText }}
-				<input id="search" class="searchBar" type="search" required>
+				{% csrf_token %}
+				<input id="search" class="searchBar" type="search", name="inputText">
 				<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+
 			</div>
 		</form>
 	</div>
