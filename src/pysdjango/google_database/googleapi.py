@@ -81,7 +81,7 @@ class CSEQuery:
 			try:
 				tmp.append(i['pagemap']['metatags'][0]['og:description'])
 			except:
-				pass
+				tmp.append("No description")
 			imageDesc.append(tmp)
 		return imageDesc
 
