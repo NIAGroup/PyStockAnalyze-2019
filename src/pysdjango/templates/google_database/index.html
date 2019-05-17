@@ -24,10 +24,8 @@
 	<div id="col2" class="col l9">
 		<p>COLUMN 2</p>
 		{% for item,desc in outputText %}
-		<div>
-			<div class="landscape">
-				<img src="{{ item }}">
-			</div>
+		<div class="description">
+			<img class="landscape" src="{{ item }}">
 			<p>{{ desc }}</p>
 		</div>
 		{% endfor %}
