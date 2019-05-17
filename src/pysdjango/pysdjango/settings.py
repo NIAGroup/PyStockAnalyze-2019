@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     #'users_app.apps.UsersAppConfig',
     'stockview_app.apps.StockviewAppConfig',
     'stockdb_app.apps.StockdbAppConfig',
+    'homepage_app',
+    'google_database.apps.GoogleDatabaseConfig',
 ]
 
 MIDDLEWARE = [
