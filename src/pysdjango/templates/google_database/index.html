@@ -15,14 +15,14 @@
 		<form id="searchHeight" , method="POST">
 			<div class="input-field">
 				{% csrf_token %}
-				<input id="search" class="searchBar" type="search" , name="inputText">
+				<input id="search" class="searchBar" type="search" , name="inputText" value="{{ inputText }}">
 				<label class="label-icon" for="search"><i class="material-icons">search</i></label>
 
 			</div>
 		</form>
 	</div>
 	<div id="col2" class="col l9">
-		<p>COLUMN 2</p>
+			<p>COLUMN 2</p>
 		{% for item,desc in outputText %}
 		<div class="description">
 			<img class="landscape" src="{{ item }}">

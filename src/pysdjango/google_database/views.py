@@ -14,7 +14,6 @@ class Home(TemplateView):
     def post(self, request):
         inputText = request.POST.get('inputText')
         outputText,tmp = CSEQuery.cse_format(inputText)
-        inputText = ""  # Reset form input
 
         args = {'inputText': inputText, 'outputText': outputText, 'tmp': tmp}
         return render(request, self.template_name, args)
