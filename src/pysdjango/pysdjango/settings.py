@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'stockdb_app.apps.StockdbAppConfig',
     'homepage_app',
     'google_database.apps.GoogleDatabaseConfig',
+    'google_viewer.apps.GoogleViewerConfig',
 ]
 
 MIDDLEWARE = [

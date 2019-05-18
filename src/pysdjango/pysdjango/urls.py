@@ -25,6 +25,7 @@ urlpatterns = [
     path('stock/db/', include ('stockdb_app.urls'), name='stock_database'),
     path('admin/', admin.site.urls),
     path('google/db/', include('google_database.urls'), name='google_db'),
+    path('google/view/', include('google_viewer.urls'), name='google_view'),
 ]
 
 #urlpatterns += staticfiles_urlpatterns()
