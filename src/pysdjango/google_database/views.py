@@ -8,12 +8,15 @@ from .forms import Search
 class Home(TemplateView):
     template_name = 'google_database/index.html'
 
+    def __init__(self):
+        pass
+
     def get(self, request):
         return render(request, self.template_name)
 
     def post(self, request):
         inputText = request.POST.get('inputText')
-        outputText,tmp = CSEQuery.cse_format(inputText)
+        outputText, tmp = CSEQuery.cse_format(inputText)
 
         args = {'inputText': inputText, 'outputText': outputText, 'tmp': tmp}
         return render(request, self.template_name, args)
