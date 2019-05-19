@@ -1,19 +1,3 @@
-"""	Google API Demo Example File
-	This file contains a simple class that demonstrates how to access the google
-	custom search engine (CSE) API to return a JSON object to be consumed
-	by a DJANGO view to be displayed on a web page.
-"""
-
-# =============================================================================
-# 1 | Document Metadata
-# =============================================================================
-__author__    = 'Lennard Streat'
-__copyright__ = 'Network of Intel African Americans 2019, PyStockAnalyze Project'
-__credits__   = ['Lennard Streat', 'Princton Brennan']
-__license__   = 'MIT'
-__version__   = '1.0'
-__email__     = 'nia.stem.club'
-
 # =============================================================================
 # 2 | Imports
 # =============================================================================
