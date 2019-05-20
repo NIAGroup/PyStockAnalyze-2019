@@ -17,7 +17,18 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    #path('home/', include('homepage_app.urls'), name='home_view'),
+    path('stock/view/', include ('stockview_app.urls'), name='stock_view'),
+    path('stock/db/', include ('stockdb_app.urls'), name='stock_database'),
+    path('google_database/', include('google_database.urls'), name='google_db'),
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('', include('pystockhub_app.urls'), name='index'),
 ]
 
+=======
+
+]
+
+#urlpatterns += staticfiles_urlpatterns()
+>>>>>>> develop

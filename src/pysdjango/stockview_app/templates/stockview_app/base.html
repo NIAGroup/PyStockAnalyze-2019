@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Stock View Dashboard</title>
+
+	{% load static %}
+	<link rel="shortcut icon" type="image/ico" href="{% static 'stockview_app/images/stock.png' %}"/>
+
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+	{% block content %}
+		<h1>Stock View Dashboard</h1>
+		<p>Generates charts for the alpha vantage stock API that can be delivered to other pages.</p>
+	{% endblock content %}
+</body>
+
+<footer>
+</footer>
+</html>
