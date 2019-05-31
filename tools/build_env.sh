@@ -14,7 +14,7 @@ PROJ_ACTENV_PATH=$PROJ_VENV_PATH/Scripts/activate
 PROJ_DJNAME='pysdjango'
 PROJ_DJANGO_PATH=$PROJ_SRC_PATH/$PROJ_DJNAME
 PROJ_MANAGE_PATH=$PROJ_DJANGO_PATH/manage.py
-alias manage='python $PROJ_MANAGE_PATH'
+alias manage='current_dir=$PWD;cd $PROJ_DJANGO_PATH;python manage.py runserver;cd $current_dir;'
 
 # Local environment (not-to-be-commited) directory
 PROJ_LOC_PATH=$PROJ_DJANGO_PATH/$PROJ_DJNAME/localenv
@@ -36,7 +36,6 @@ if [ ! -d $PROJ_VENV_PATH ]; then
 
 	echo "[build] Upgrading pip installation"
 	python -m pip install --upgrade pip $PROXY_OPT
-	python -m pip install --upgrade pip $PROXY_OPT --user
 
 	echo "[build] Instsalling dependencies"
 	pip install -r $PROJ_TOOL_PATH/requirements.txt $PROXY_OPT
