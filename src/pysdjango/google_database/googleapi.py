@@ -13,7 +13,6 @@ import pprint as pp
 from pysdjango.localenv import localuser
 from pysdjango.localenv import localapikeys
 from pysdjango.localenv import localwebproxy
-from google_database import parsedata
 
 # =============================================================================
 # 3 | Custom Search Engine Simple Query Class
@@ -56,6 +55,15 @@ class CSEQuery:
 
         return resp
 
+    def cse_news_search(search_string):
+        googleURL = "https://news.google.com/rss/search?q="
+        words = search_string.split()
+        for word in words:
+            googleURL += word + "+"
+        page = requests.get(googleURL)
+        return page.text
+
+
     def cse_imagesDescriptons(resp):
         imageDesc = []
         for i in resp['items']:
@@ -77,4 +85,4 @@ class CSEQuery:
         resp = CSEQuery.cse_search(search_string)
         imageDesc = CSEQuery.cse_imagesDescriptons(resp)
         # return pp.pformat(resp, indent=4)
-        return imageDesc, resp
+        return imageDesc,resp

@@ -36,6 +36,7 @@ if [ ! -d $PROJ_VENV_PATH ]; then
 
 	echo "[build] Upgrading pip installation"
 	python -m pip install --upgrade pip $PROXY_OPT
+	python -m pip install --upgrade pip $PROXY_OPT --user
 
 	echo "[build] Instsalling dependencies"
 	pip install -r $PROJ_TOOL_PATH/requirements.txt $PROXY_OPT
