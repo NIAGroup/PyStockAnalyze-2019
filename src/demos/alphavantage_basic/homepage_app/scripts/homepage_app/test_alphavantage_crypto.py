@@ -3,7 +3,8 @@ from alpha_vantage.foreignexchange import ForeignExchange
 import time as timer
 import socket, requests, collections
 from bs4 import BeautifulSoup
-from random import randint
+import secrets
+
 '''
 #### CryptoCurrencies Methods:																####
 #### get_digital_currency_intraday, 														####
@@ -69,7 +70,7 @@ class AlphaInputs():
 		#print(out_array)
 
 class Forex_Comparison():
-	api_key = str(randint(0,320000))
+	api_key = str(secrets.SystemRandom().randint(0,320000))
 	forex = ForeignExchange(api_key,0)
 	if isBehindFirewall():
 		print("behind firewall")
@@ -93,7 +94,7 @@ class Crypto_Generate():
 
 	#~~generates a random api key each time a call is made. The key is not specific, but a current theory is
 	#~~too many requests from the same dummykey msy cause issues
-	api_key = str(randint(0,320000))
+	api_key = str(secrets.SystemRandom().randint(0,320000))
 	#~~The CryptoCurrency class takes a minimum of one argument (the api key), but the retry count can be added
 	#~~as well. This was added to avoid retrying failed attempts as it caused known good requests to fail directly
 	#~~afterwards. 
