@@ -29,9 +29,9 @@ class AlphaInputs():
 			'http' : 'http://proxy-us.intel.com:911',
 			'https' : 'https://proxy-us.intel.com:912',
 			}
-			r = requests.get(self.link_symbols_crypto,"lxml", proxies=proxies)
+			r = requests.get(self.link_symbols_crypto,"lxml", proxies=proxies, timeout=60)
 		else:
-			r = requests.get(self.link_symbols_crypto,"lxml")
+			r = requests.get(self.link_symbols_crypto,"lxml", timeout=60)
 		
 		soup = BeautifulSoup(r.content).get_text()
 		soup = soup.split("\r\n")
@@ -51,9 +51,9 @@ class AlphaInputs():
 			'http' : 'http://proxy-us.intel.com:911',
 			'https' : 'https://proxy-us.intel.com:912',
 			}
-			r = requests.get(self.link_markets_crypto,"lxml", proxies=proxies)
+			r = requests.get(self.link_markets_crypto,"lxml", proxies=proxies, timeout=60)
 		else:
-			r = requests.get(self.link_markets_crypto,"lxml")
+			r = requests.get(self.link_markets_crypto,"lxml", timeout=60)
 		soup = BeautifulSoup(r.content).get_text()
 		soup = soup.split("\r\n")
 		soup.pop(0)
