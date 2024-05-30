@@ -130,3 +130,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
     os.path.join(BASE_DIR, 'homepage_app'),
 )
+SESSION_COOKIE_SECURE = True
