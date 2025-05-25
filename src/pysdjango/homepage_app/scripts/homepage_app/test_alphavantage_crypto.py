@@ -1,8 +1,10 @@
 from alpha_vantage.cryptocurrencies import CryptoCurrencies
 import time as timer
-import socket, requests
+import socket
 from bs4 import BeautifulSoup
 from random import randint
+from security import safe_requests
+
 '''
 #### CryptoCurrencies Methods:																####
 #### get_digital_currency_intraday, 														####
@@ -29,9 +31,9 @@ class AlphaInputs():
 			'http' : 'http://proxy-us.intel.com:911',
 			'https' : 'https://proxy-us.intel.com:912',
 			}
-			r = requests.get(self.link_symbols_crypto,"lxml", proxies=proxies)
+			r = safe_requests.get(self.link_symbols_crypto,"lxml", proxies=proxies)
 		else:
-			r = requests.get(self.link_symbols_crypto,"lxml")
+			r = safe_requests.get(self.link_symbols_crypto,"lxml")
 		
 		soup = BeautifulSoup(r.content).get_text()
 		soup = soup.split("\r\n")
@@ -51,9 +53,9 @@ class AlphaInputs():
 			'http' : 'http://proxy-us.intel.com:911',
 			'https' : 'https://proxy-us.intel.com:912',
 			}
-			r = requests.get(self.link_markets_crypto,"lxml", proxies=proxies)
+			r = safe_requests.get(self.link_markets_crypto,"lxml", proxies=proxies)
 		else:
-			r = requests.get(self.link_markets_crypto,"lxml")
+			r = safe_requests.get(self.link_markets_crypto,"lxml")
 		soup = BeautifulSoup(r.content).get_text()
 		soup = soup.split("\r\n")
 		soup.pop(0)
